@@ -1,0 +1,141 @@
+{
+  "productor": "Sizze Beats",
+  "ciudad": "Barcelona, Spain",
+  "beatstars_perfil": "https://www.beatstars.com/sizzebeatz",
+  "instagram": "https://www.instagram.com/sizze1",
+  "youtube": "https://www.youtube.com/@sizzebeats",
+  "soundcloud": "https://www.soundcloud.com/sizze1",
+  "licencia_unica": {
+    "nombre": "Basic License (MP3 Lease)",
+    "formato": "MP3",
+    "terminos": [
+      "Uso para grabación musical",
+      "Distribución de hasta 2.000 copias",
+      "500.000 reproducciones de audio en streaming",
+      "1 video musical",
+      "Actuaciones en directo con fines de lucro",
+      "Derechos de radiodifusión (2 emisoras)"
+    ],
+    "nota": "Cada beat tiene un único tier de licencia (Basic/MP3) en BeatStars; el precio varia por beat. Si en el futuro Sizze añade licencias WAV/Trackout/Exclusive, actualizar esta sección."
+  },
+  "excluidos_a_proposito": [
+    {
+      "id": "TK25960944",
+      "titulo": "TELEKINESIS HOKE TYPE BEAT",
+      "nota": "Sigue publicado en BeatStars pero el cliente pidió quitarlo de la web (2026-09-11). No volver a añadirlo salvo que lo pida."
+    }
+  ],
+  "beats": [
+    {
+      "id": "TK26221655",
+      "titulo": "Hoke x La Pantera Type Beat",
+      "precio": 23.95,
+      "bpm": 143,
+      "key": "Dm",
+      "tags": ["trap type beat", "la pantera type beat", "hoke type beat"],
+      "beatstars_url": "https://www.beatstars.com/beat/hoke-x-la-pantera-type-beat-26221655",
+      "cover": "assets/img/13-hoke-la-pantera.webp",
+      "publicado": "2026-09-11"
+    },
+    {
+      "id": "TK26215294",
+      "titulo": "ELADIO CARRION TYPE BEAT - Low-Key",
+      "precio": 23.95,
+      "bpm": 133,
+      "key": "C#m",
+      "tags": ["eladio carrion", "la pantera type beat", "trap beat"],
+      "beatstars_url": "https://www.beatstars.com/beat/eladio-carrion-type-beat-low-key-26215294",
+      "cover": "assets/img/01-eladio-carrion-low-key.webp"
+    },
+    {
+      "id": "TK26210075",
+      "titulo": "ALL CITY",
+      "precio": 23.95,
+      "bpm": 96,
+      "tags": ["hoke", "hoke type beat"],
+      "beatstars_url": "https://www.beatstars.com/beat/all-city-26210075",
+      "cover": "assets/img/02-all-city.webp"
+    },
+    {
+      "id": "TK21997369",
+      "titulo": "DANO - SUPERDEPORTIVO TYPE BEAT - Ergo Pro, Ill Pekeño Type",
+      "precio": 23.95,
+      "bpm": 80,
+      "tags": ["boom bap", "dano type beat"],
+      "beatstars_url": "https://www.beatstars.com/beat/dano-superdeportivo-type-beat-ergo-pro-ill-pekeno-type-21997369",
+      "cover": "assets/img/04-dano-superdeportivo.webp"
+    },
+    {
+      "id": "TK21961657",
+      "titulo": "Hoke Type Beat - Fabergé",
+      "precio": 23.95,
+      "bpm": 147,
+      "tags": ["bbo", "hoke"],
+      "beatstars_url": "https://www.beatstars.com/beat/hoke-type-beat-faberge-21961657",
+      "cover": "assets/img/05-hoke-faberge.webp"
+    },
+    {
+      "id": "TK21744253",
+      "titulo": "HOKE TYPE BEAT - TRES CREUS TYPE BEAT",
+      "precio": 23.95,
+      "bpm": 140,
+      "tags": ["hip hop", "hoke type beat"],
+      "beatstars_url": "https://www.beatstars.com/beat/hoke-type-beat-tres-creus-type-beat-21744253",
+      "cover": "assets/img/06-hoke-tres-creus-21744253.webp"
+    },
+    {
+      "id": "TK21730112",
+      "titulo": "CRUZ CAFUNÉ TYPE BEAT - TRAP TYPE BEAT",
+      "precio": 23.95,
+      "bpm": 140,
+      "tags": ["cruz cafuné", "hoke type beat"],
+      "beatstars_url": "https://www.beatstars.com/beat/cruz-cafune-type-beat-trap-type-beat-21730112",
+      "cover": "assets/img/07-cruz-cafune.webp"
+    },
+    {
+      "id": "TK21550206",
+      "titulo": "MORAD, HOKE TYPE BEAT - TRES CREUS TYPE BEAT",
+      "precio": 23.95,
+      "bpm": 130,
+      "tags": ["hoke", "morad"],
+      "beatstars_url": "https://www.beatstars.com/beat/morad-hoke-type-beat-tres-creus-type-beat-21550206",
+      "cover": "assets/img/08-morad-hoke.webp"
+    },
+    {
+      "id": "TK21249584",
+      "titulo": "A Dense x Ebano x Hoke Type Beat",
+      "precio": 23.95,
+      "bpm": 114,
+      "tags": ["ébano", "a.dense"],
+      "beatstars_url": "https://www.beatstars.com/beat/a-dense-x-ebano-x-hoke-type-beat-21249584",
+      "cover": "assets/img/09-a-dense-ebano-hoke.webp"
+    },
+    {
+      "id": "TK21190408",
+      "titulo": "TRES CREUS - HOKE TYPE BEAT - M.A.N",
+      "precio": 30.95,
+      "bpm": 140,
+      "tags": ["hoke type beat", "tres creus type beat"],
+      "beatstars_url": "https://www.beatstars.com/beat/tres-creus-hoke-type-beat-m-a-n-21190408",
+      "cover": "assets/img/10-tres-creus-man.webp"
+    },
+    {
+      "id": "TK21051591",
+      "titulo": "HOKE TYPE BEAT - Tres Creus Type Beat",
+      "precio": 23.95,
+      "bpm": 138,
+      "tags": ["hip hop", "hoke type beat"],
+      "beatstars_url": "https://www.beatstars.com/beat/hoke-type-beat-tres-creus-type-beat-21051591",
+      "cover": "assets/img/11-hoke-tres-creus-21051591.webp"
+    },
+    {
+      "id": "TK21029337",
+      "titulo": "HOKE TYPE BEAT- Tres Creus Type Beat",
+      "precio": 23.95,
+      "bpm": 140,
+      "tags": ["hip hop", "tres creus"],
+      "beatstars_url": "https://www.beatstars.com/beat/hoke-type-beat-tres-creus-type-beat-21029337",
+      "cover": "assets/img/12-hoke-tres-creus-21029337.webp"
+    }
+  ]
+}
