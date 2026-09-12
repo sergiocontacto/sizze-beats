@@ -228,6 +228,25 @@ propia en Google (recuadro de conocimiento) en vez de autocorregir a "size beats
    crear una entrada en Wikidata — es una de las fuentes que más alimenta los
    Knowledge Panels de artistas.
 
+## Revisión 10 (2026-09-12) — Actualización de catálogo
+- Se revisó BeatStars (`/sizzebeatz/tracks`, 14 tracks en total) y se detectó 1 beat
+  nueva publicada hoy: **Hoke x Cruzzi - Trap Type Beat** (id TK26226217, $23.95,
+  138 BPM, key Em, tags "drake type beat" / "rio leyva type beat").
+  `https://www.beatstars.com/beat/hoke-x-cruzzi-trap-type-beat-26226217`
+- Añadida como posición 1 (más reciente) en `index.html` (catalog-grid + JSON-LD
+  ItemList) y en `memoria/catalogo.json`. Portada descargada a 900x900 vía el truco
+  del CDN de BeatStars → `assets/img/14-hoke-cruzzi.webp`.
+- El resto de los 12 beats existentes siguen igual (mismo precio/BPM/key que antes).
+- TELEKINESIS sigue publicado en BeatStars pero se mantiene excluido a propósito
+  (ver `excluidos_a_proposito` en catalogo.json) — no se ha tocado.
+- Licencia: comprobado en la página del beat nuevo — sigue siendo un único tier
+  **Basic License / MP3** por beat (aunque el perfil ahora anuncia "3 bulk deals"
+  con Premium/Exclusive WAV en la vista general, la página individual del beat
+  solo ofrece Basic License $23.95 MP3). No hace falta cambiar la sección de
+  licencias de la web.
+- Pendiente: subir estos cambios a GitHub (commit + push) para que se publiquen
+  en sizzebeats.com vía GitHub Pages.
+
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
    Hostinger por FTP o el Administrador de archivos.

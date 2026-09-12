@@ -27,6 +27,17 @@
   ],
   "beats": [
     {
+      "id": "TK26226217",
+      "titulo": "Hoke x Cruzzi - Trap Type Beat",
+      "precio": 23.95,
+      "bpm": 138,
+      "key": "Em",
+      "tags": ["drake type beat", "rio leyva type beat"],
+      "beatstars_url": "https://www.beatstars.com/beat/hoke-x-cruzzi-trap-type-beat-26226217",
+      "cover": "assets/img/14-hoke-cruzzi.webp",
+      "publicado": "2026-09-12"
+    },
+    {
       "id": "TK26221655",
       "titulo": "Hoke x La Pantera Type Beat",
       "precio": 23.95,
