@@ -131,12 +131,109 @@ Se volvió a revisar el perfil de BeatStars para poner el catálogo al día:
 - Nada de esto es automático (ver conversación): cada vez que se suba un beat nuevo
   a BeatStars hay que avisar para repetir este proceso manualmente.
 
+## Revisión 7 (2026-09-11, noche) — Publicada en GitHub Pages
+- Repo: https://github.com/sergiocontacto/sizze-beats (cuenta GitHub: sergiocontacto,
+  autenticada por CLI con `gh auth login`).
+- **Live ahora mismo en**: https://sergiocontacto.github.io/sizze-beats/
+- GitHub Pages activado con `gh api repos/.../pages` (fuente: rama `main`, carpeta `/`).
+- El `.htaccess` no aplica en GitHub Pages (es cosa de Apache/Hostinger) — no pasa
+  nada, el cache-busting `?v=` en el HTML sigue haciendo su función.
+- El `canonical`, Open Graph y JSON-LD del `<head>` se dejaron apuntando a
+  `sizzebeats.com` (el dominio final que el cliente va a comprar en Spaceship), NO a
+  la URL temporal de GitHub Pages — así cuando conecte el dominio no hay que tocar
+  nada de SEO ni arriesgar contenido duplicado.
+- **Pendiente**: cuando el cliente compre `sizzebeats.com` en Spaceship, hay que:
+  1. Añadir un archivo `CNAME` en la raíz del repo con el contenido `sizzebeats.com`
+     (o activarlo desde Settings → Pages → Custom domain en GitHub, que lo crea solo).
+  2. En Spaceship, apuntar los DNS del dominio a GitHub Pages: registros A a
+     185.199.108.153, .109.153, .110.153, .111.153, y opcionalmente un CNAME `www` →
+     `sergiocontacto.github.io`.
+  3. Activar "Enforce HTTPS" en Settings → Pages una vez el DNS propague.
+  El cliente pidió que esto lo haga yo directamente desde su Chrome cuando tenga el
+  dominio comprado y la sesión de Spaceship abierta.
+
+## Revisión 8 (2026-09-11, noche) — Dominio conectado
+DNS configurado en Spaceship (registros añadidos vía la web, con un truco: el campo
+"Host" parecía llevar "@" por defecto pero en realidad estaba vacío — placeholder
+engañoso — hubo que forzar el valor real con JS antes de poder guardar cada fila):
+- A @ → 185.199.108.153 / .109.153 / .110.153 / .111.153 (las 4 IPs de GitHub Pages)
+- CNAME www → sergiocontacto.github.io
+
+DNS ya propagado y confirmado: **http://sizzebeats.com funciona** (200 OK).
+HTTPS todavía no: GitHub emite el certificado (Let's Encrypt) automáticamente tras
+verificar el DNS, puede tardar de minutos a alguna hora — no requiere ninguna acción,
+solo esperar. **Completado.** El certificado tardó en aparecer más de lo normal (quedó atascado);
+se resolvió quitando el dominio personalizado (`cname=null`) y volviéndolo a poner
+(`cname=sizzebeats.com`) por la API — eso reactivó la emisión y el certificado quedó
+"approved" en segundos. HTTPS forzado activado. Verificado:
+`https://sizzebeats.com` → 200 · `http://` → 301 a https · `www.` → 301 a apex.
+Si en un futuro deploy el certificado se vuelve a quedar atascado, repetir ese
+mismo truco (quitar y volver a poner el cname).
+
+## Revisión 9 (2026-09-11, noche) — Alta en Google Search Console
+- Propiedad de dominio `sizzebeats.com` verificada en Google Search Console (cuenta
+  Google logueada en el Chrome del cliente), vía registro TXT en Spaceship
+  (`google-site-verification=C1SfR-PwQMzE13hmRUXdt9NkcEAAZMVB1Suwb6szW0M`, host `@`).
+  **No borrar ese TXT** o se pierde la verificación.
+- `sitemap.xml` enviado en Search Console (Indexing → Sitemaps).
+- Indexación solicitada manualmente para `https://sizzebeats.com/` vía
+  "URL Inspection" → "Request indexing" (cola de rastreo prioritaria) — confirmado
+  "Indexing requested".
+- Pendiente / recomendado para reforzar el SEO de marca (no hecho todavía, pedir
+  confirmación al cliente antes de tocar sus perfiles):
+  - Añadir el link a sizzebeats.com en la bio/about de BeatStars, Instagram y YouTube
+    (backlinks que ayudan a Google a confiar en que ese es el sitio oficial).
+  - Revisar en unos días en Search Console → Pages si la home ya está indexada.
+
+## Revisión 10 (2026-09-12) — Cierre de SEO técnico
+Auditoría completa de SEO on-page/técnico sobre lo ya hecho en la Revisión 9. Todo lo
+que faltaba de "SEO que se puede hacer sin salir del código" quedó cerrado:
+- **JSON-LD `MusicGroup` enriquecido**: se añadió `@id` (ancla estable de la entidad
+  para futuras interconexiones), `logo` (requisito de Google para el "Organization
+  logo" en resultados de búsqueda / knowledge panel), `address` (Barcelona, ES) e
+  `inLanguage`. `sameAs` se dejó igual (BeatStars, Instagram, YouTube — sin
+  SoundCloud, a propósito, ver Revisión 2).
+- **Meta tags que faltaban**: `og:image:alt` y `twitter:image:alt` (accesibilidad +
+  señal extra para cómo Google/redes interpretan la imagen social).
+- **Favicon completo**: se generó `favicon.ico` (16/32/48px, desde `favicon-32.png`)
+  en la raíz — antes solo había `<link rel="icon">` en PNG, y algunos crawlers/
+  navegadores viejos piden `/favicon.ico` directo por defecto.
+- **`site.webmanifest`** nuevo (nombre, iconos 192px/512px generados desde
+  `logo.webp`, `theme_color`/`background_color` blancos) enlazado con
+  `<link rel="manifest">` — hace la web instalable como PWA y es señal adicional
+  de "sitio serio" para Google.
+- **`404.html`** nuevo, con el mismo estilo del sitio (`noindex, follow`) — GitHub
+  Pages lo sirve automáticamente en rutas inexistentes; antes no existía y se veía
+  el 404 genérico de GitHub.
+- **`sitemap.xml`**: `lastmod` actualizado a la fecha de este despliegue.
+- Cache-busting (`?v=`) subido a `20260912` en `index.html` y `gracias.html`.
+- Nuevo `.gitignore` (excluye `.claude/`, config local de herramientas de desarrollo
+  que no debe subirse al repo).
+- Verificado en local (servidor estático) que index, favicon.ico, site.webmanifest y
+  404.html cargan y renderizan bien, y que los dos bloques JSON-LD siguen siendo
+  JSON válido tras los cambios.
+
+### Lo que NO es código y sigue pendiente (impacto real más alto para el SEO de marca)
+Esto es lo que de verdad mueve la aguja para que "Sizze Beats" aparezca como entidad
+propia en Google (recuadro de conocimiento) en vez de autocorregir a "size beats":
+1. **Backlinks desde los propios perfiles**: añadir el link a `sizzebeats.com` en la
+   bio/about de BeatStars, Instagram y YouTube (pendiente desde la Revisión 9 — pedir
+   confirmación antes de tocar esos perfiles).
+2. **Consistencia de grafía**: usar siempre "Sizze Beats" (nunca "Size Beats") en todo
+   contenido nuevo — posts, descripciones de BeatStars, etc. — para que Google deje de
+   autocorregir la búsqueda.
+3. Revisar en unos días Search Console → Pages para confirmar que la home ya está
+   indexada, y repetir "Request indexing" si hiciera falta tras este despliegue.
+4. (Opcional, más adelante) Si hay prensa/colaboraciones que den notoriedad, valorar
+   crear una entrada en Wikidata — es una de las fuentes que más alimenta los
+   Knowledge Panels de artistas.
+
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
    Hostinger por FTP o el Administrador de archivos.
 2. `.htaccess` ya está incluido — gestiona caché y tipos MIME correctos.
 3. Si cambias `styles.css` o `main.js` en el futuro, sube el `?v=YYYYMMDD` en
-   `index.html` a la fecha del nuevo despliegue (ahora mismo: `20260911`).
+   `index.html` a la fecha del nuevo despliegue (ahora mismo: `20260912`).
 4. Cuando tengas el dominio, reemplaza `sizzebeats.com` por el real en `index.html`,
    `sitemap.xml` y `robots.txt`, y da de alta el sitio en Google Search Console
    enviando `sitemap.xml`.
