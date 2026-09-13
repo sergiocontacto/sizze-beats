@@ -265,6 +265,47 @@ ul { list-style: none; padding: 0; }
 .beat-price { font-family: var(--mono); font-size: .95rem; font-weight: 700; }
 
 /* =============================================================
+   8. Licensing
+   ============================================================= */
+.section-licensing .grid-12 { border-bottom: 0; }
+.license-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: var(--line);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+@media (min-width: 640px)  { .license-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1280px) { .license-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.license-card { background: var(--bg); padding: 1.4rem 1.3rem; }
+.license-card h3 {
+  font-family: var(--sans); font-weight: 700; font-size: 1rem;
+  text-transform: uppercase; margin-bottom: .6rem;
+}
+.license-price { font-family: var(--mono); font-size: 1.4rem; font-weight: 700; line-height: 1; }
+.license-format { font-family: var(--mono); font-size: .78rem; color: var(--mute); margin: .4rem 0 1.1rem; }
+.license-terms { border-top: 1px solid var(--line); padding-top: 1rem; }
+.license-terms li {
+  font-family: var(--mono); font-size: .8rem; line-height: 1.5; color: var(--mute);
+  padding-left: 1rem; position: relative; margin-bottom: .55rem;
+}
+.license-terms li::before { content: "—"; position: absolute; left: 0; }
+.license-terms li:last-child { margin-bottom: 0; }
+
+.license-card-exclusive { background: var(--ink); color: var(--bg); }
+.license-card-exclusive .license-format,
+.license-card-exclusive .license-terms li { color: #b8b8b8; }
+.license-card-exclusive .license-terms { border-top-color: #333; }
+
+.license-footnote {
+  font-family: var(--mono); font-size: .82rem; color: var(--mute);
+  padding: 1.3rem clamp(1.25rem, 4vw, 3rem) 2.5rem;
+}
+.license-footnote a { color: var(--ink); }
+
+/* =============================================================
    9. Social
    ============================================================= */
 .social-rows { border-top: 1px solid var(--line); margin-top: 1.5rem; }

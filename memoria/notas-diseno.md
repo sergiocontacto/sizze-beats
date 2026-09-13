@@ -269,6 +269,31 @@ propia en Google (recuadro de conocimiento) en vez de autocorregir a "size beats
   portadas) — el embed oficial es la única vía fiable y permitida por BeatStars
   para reproducir sus previews fuera del propio sitio.
 
+## Revisión 12 (2026-09-13) — Sección de licencias
+- El cliente actualizó su cuenta de BeatStars con 4 tiers de licencia (antes solo
+  había "Basic License $23.95 MP3" por beat). Comprobado en Studio > Contracts >
+  Tracks (studio.beatstars.com/contracts/tracks): MP3 Lease $20, WAV Lease $25.95,
+  Premium License $49.95, Exclusive License (offer only). Términos de uso exactos
+  extraídos de cada formulario de contrato (ver `memoria/catalogo.json` →
+  `licencias`).
+- Añadida sección "03. Licensing" en `index.html`, justo debajo del catálogo
+  (como pidió el cliente), con una tarjeta por tier. La tarjeta "Exclusive
+  License" está invertida (fondo negro) para destacarla como tier superior,
+  sin usar ningún color de acento (mantiene la paleta blanco/negro de marca).
+  Debajo hay una nota + link a BeatStars.
+- Renumeradas las secciones siguientes: About pasa de 03→04, Contact de 04→05.
+  Añadido "Licensing" al menú de navegación.
+- Meta description actualizada (ya no dice "MP3 license", ahora menciona los
+  4 tiers).
+- Nuevos estilos en `styles.css` (`.license-grid`, `.license-card`,
+  `.license-card-exclusive`, `.license-terms`, `.license-footnote`).
+  Cache-busting subido a `?v=20260913b`.
+- Nota: estos precios/tiers son la plantilla "on new content" — los 13 beats
+  ya publicados siguen teniendo su contrato individual antiguo hasta que el
+  cliente pulse "Apply to all tracks" en BeatStars (no lo hemos tocado, es una
+  decisión suya). La sección de la web es informativa general, no depende de
+  qué tier tenga cada beat en concreto ahora mismo.
+
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
    Hostinger por FTP o el Administrador de archivos.

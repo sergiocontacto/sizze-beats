@@ -5,18 +5,35 @@
   "instagram": "https://www.instagram.com/sizze1",
   "youtube": "https://www.youtube.com/@sizzebeats",
   "soundcloud": "https://www.soundcloud.com/sizze1",
-  "licencia_unica": {
-    "nombre": "Basic License (MP3 Lease)",
-    "formato": "MP3",
-    "terminos": [
-      "Uso para grabación musical",
-      "Distribución de hasta 2.000 copias",
-      "500.000 reproducciones de audio en streaming",
-      "1 video musical",
-      "Actuaciones en directo con fines de lucro",
-      "Derechos de radiodifusión (2 emisoras)"
-    ],
-    "nota": "Cada beat tiene un único tier de licencia (Basic/MP3) en BeatStars; el precio varia por beat. Si en el futuro Sizze añade licencias WAV/Trackout/Exclusive, actualizar esta sección."
+  "licencias": {
+    "actualizado": "2026-09-13",
+    "nota": "Desde el 13/09/2026 la cuenta de BeatStars tiene 4 tiers de licencia configurados como plantilla por defecto (Studio > Contracts > Tracks, 'ON NEW CONTENT'). Datos extraídos directamente de los formularios de cada contrato en BeatStars Studio.",
+    "tiers": [
+      {
+        "nombre": "MP3 Lease",
+        "precio": 20,
+        "formato": "MP3",
+        "terminos": ["2.000 copias de distribución", "500.000 streams", "1 video musical monetizado", "Descargas gratuitas ilimitadas", "Sin radiodifusión", "Sin actuaciones en directo con fines de lucro"]
+      },
+      {
+        "nombre": "WAV Lease",
+        "precio": 25.95,
+        "formato": "MP3 + WAV",
+        "terminos": ["2.000 copias de distribución", "500.000 streams", "1 video musical monetizado", "Descargas gratuitas ilimitadas", "Radiodifusión (2 emisoras)", "Actuaciones en directo con fines de lucro"]
+      },
+      {
+        "nombre": "Premium License",
+        "precio": 49.95,
+        "formato": "MP3 + WAV + Track Stems",
+        "terminos": ["3.000 copias de distribución", "500.000 streams", "1 video musical monetizado", "Descargas gratuitas ilimitadas", "Radiodifusión (2 emisoras)", "Actuaciones en directo con fines de lucro"]
+      },
+      {
+        "nombre": "Exclusive License",
+        "precio": "A convenir (offer only)",
+        "formato": "MP3 + WAV + Track Stems",
+        "terminos": ["Derechos exclusivos completos — el beat se retira de la tienda tras la compra", "Distribución, streams y vídeo ilimitados", "Radiodifusión y actuaciones en directo incluidas", "Precio negociado vía oferta en BeatStars"]
+      }
+    ]
   },
   "excluidos_a_proposito": [
     {
