@@ -133,12 +133,67 @@
     });
   }
 
+  // ---- Inline beat previews (BeatStars embed player, lazy-loaded on click) ----
+  function initBeatPlayers() {
+    var cards = $$("[data-beat-id]");
+    if (!cards.length) return;
+    var current = null;
+
+    function closeCard(card) {
+      var btn = $("[data-beat-play]", card);
+      var icon = btn ? $(".beat-play-icon", btn) : null;
+      var mount = $("[data-beat-player]", card);
+      if (btn) { btn.classList.remove("is-playing"); btn.setAttribute("aria-pressed", "false"); btn.setAttribute("aria-label", "Play preview"); }
+      if (icon) icon.textContent = "▶";
+      if (mount) { mount.hidden = true; mount.innerHTML = ""; }
+    }
+
+    cards.forEach(function (card) {
+      var btn = $("[data-beat-play]", card);
+      var mount = $("[data-beat-player]", card);
+      var icon = btn ? $(".beat-play-icon", btn) : null;
+      if (!btn || !mount) return;
+      var id = card.getAttribute("data-beat-id");
+      var title = card.getAttribute("data-beat-title") || "beat preview";
+
+      btn.addEventListener("click", function () {
+        var wasOpen = card === current;
+        if (current && current !== card) closeCard(current);
+
+        if (wasOpen) {
+          closeCard(card);
+          current = null;
+          return;
+        }
+
+        var iframe = document.createElement("iframe");
+        iframe.src = "https://www.beatstars.com/embed/track/?id=" + encodeURIComponent(id);
+        iframe.width = "100%";
+        iframe.height = "140";
+        iframe.style.border = "none";
+        iframe.loading = "lazy";
+        iframe.title = "BeatStars player — " + title;
+        iframe.allow = "autoplay";
+        mount.innerHTML = "";
+        mount.appendChild(iframe);
+        mount.hidden = false;
+
+        btn.classList.add("is-playing");
+        btn.setAttribute("aria-pressed", "true");
+        btn.setAttribute("aria-label", "Close preview");
+        if (icon) icon.textContent = "✕";
+        current = card;
+      });
+    });
+  }
+
   function boot() {
     safe(initReveals, "initReveals");
     safe(initNav, "initNav");
     safe(initMobileNav, "initMobileNav");
     safe(initAnchors, "initAnchors");
     safe(initContactForm, "initContactForm");
+    safe(initBeatPlayers, "initBeatPlayers");
     document.documentElement.classList.add("is-ready");
   }
 

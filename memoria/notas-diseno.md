@@ -247,6 +247,28 @@ propia en Google (recuadro de conocimiento) en vez de autocorregir a "size beats
 - Pendiente: subir estos cambios a GitHub (commit + push) para que se publiquen
   en sizzebeats.com vía GitHub Pages.
 
+## Revisión 11 (2026-09-13) — Reproductor de beats integrado en la web
+- Cada beat-card ahora tiene un botón ▶ circular sobre la portada. Al pulsarlo se
+  inyecta (lazy, solo al hacer click) el **widget oficial de embed de BeatStars**
+  (`<iframe src="https://www.beatstars.com/embed/track/?id=<ID>">`, obtenido desde
+  el botón "Share → Embed" de cada beat en BeatStars) debajo de esa tarjeta, con
+  reproductor + botón de compra integrados de BeatStars.
+- Solo un reproductor puede estar abierto a la vez: abrir uno cierra automáticamente
+  el anterior (evita que suenen dos beats a la vez). Botón vuelve a ▶ al cerrar.
+- El texto/link del título+precio sigue llevando a la página del beat en BeatStars
+  (para comprar); la portada+botón ▶ ya no son un link, son el trigger del player.
+- Se eliminó el overlay de texto "Listen & buy ↗" (ya no hace falta, el botón ▶ es
+  la acción principal de la portada).
+- Cambios en: `index.html` (estructura de las 13 beat-cards + `data-beat-id` /
+  `data-beat-title`), `styles.css` (`.beat-play`, `.beat-player`, quitado
+  `.beat-link`/`.beat-cover-overlay`), `main.js` (nueva función `initBeatPlayers`).
+  Cache-busting subido a `?v=20260913`.
+- Probado localmente (servidor HTTP local) antes de publicar: el player carga
+  correctamente y el toggle abrir/cerrar funciona.
+- No se usó ningún truco de URL directa de audio (a diferencia del truco de
+  portadas) — el embed oficial es la única vía fiable y permitida por BeatStars
+  para reproducir sus previews fuera del propio sitio.
+
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
    Hostinger por FTP o el Administrador de archivos.
