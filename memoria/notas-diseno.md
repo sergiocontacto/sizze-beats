@@ -304,6 +304,27 @@ propia en Google (recuadro de conocimiento) en vez de autocorregir a "size beats
 - Actualizado en `index.html` (13 `beat-price` + 13 `offers.price` del
   JSON-LD) y en `memoria/catalogo.json` (campo `precio` de cada beat).
 
+## Revisión 14 (2026-09-13, tarde) — Nuevo beat + cambio de modelo de precios
+- Beat nuevo detectado en BeatStars (15 tracks en total): **La Pantera x Lucho RK
+  Type Beat** (id TK26232632, 156 BPM, key Bm, tags "la pantera type beat" /
+  "lucho rk type beat"). Añadido como posición 1 (más reciente) en `index.html`
+  y `memoria/catalogo.json`. Portada descargada a 900x900 →
+  `assets/img/15-la-pantera-lucho-rk.webp`.
+- **Cambio importante**: el cliente aplicó el sistema de 4 tiers a TODO el
+  catálogo (antes solo estaba como plantilla "on new content"). Ahora los 15
+  beats tienen varias licencias seleccionables (MP3 Lease $20 / WAV Lease
+  $25.95 / etc.), y el precio público que muestra BeatStars en el perfil y en
+  "More from Sizze Beats" es uniformemente **$20** (el más barato, MP3 Lease).
+  Excepción: "TRES CREUS - HOKE TYPE BEAT - M.A.N" tiene un WAV Lease con
+  precio manual de $30.95 en vez de los $25.95 estándar (anotado en
+  `catalogo.json` como `precio_nota`).
+- Por eso, todos los precios visibles en la web (`beat-price` y el `price` del
+  JSON-LD) pasaron de precios fijos ($25.95/$30.95) a **"From $20"** /
+  `"price": "20"` — refleja el precio de entrada real para cada beat. La
+  sección de Licensing (03) ya explicaba los 4 tiers, así que no necesitó
+  cambios de contenido, solo se mantiene coherente con este nuevo modelo.
+- `sitemap.xml` `lastmod` actualizado a 2026-09-13.
+
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
    Hostinger por FTP o el Administrador de archivos.
