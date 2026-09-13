@@ -121,6 +121,7 @@ ul { list-style: none; padding: 0; }
   background: var(--bg);
   border-bottom: 1px solid var(--line);
 }
+@media (min-width: 720px) { .nav { justify-content: center; } }
 .nav-links { display: none; align-items: center; gap: 1.75rem; font-family: var(--mono); font-size: .85rem; text-transform: uppercase; letter-spacing: .04em; }
 @media (min-width: 720px) { .nav-links { display: flex; } }
 
