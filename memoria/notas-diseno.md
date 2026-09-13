@@ -294,6 +294,16 @@ propia en Google (recuadro de conocimiento) en vez de autocorregir a "size beats
   decisión suya). La sección de la web es informativa general, no depende de
   qué tier tenga cada beat en concreto ahora mismo.
 
+## Revisión 13 (2026-09-13) — Actualización de precios del catálogo
+- El cliente subió el precio por defecto en BeatStars (probablemente aplicó
+  "Apply to all tracks" con el tier WAV Lease $25.95 tras la Revisión 12).
+  Comprobado precio real en la página pública de cada uno de los 13 beats:
+  los 12 beats que antes costaban $23.95 ahora cuestan **$25.95**.
+- "TRES CREUS - HOKE TYPE BEAT - M.A.N" se mantiene en **$30.95** (precio
+  manual, no le afectó el cambio).
+- Actualizado en `index.html` (13 `beat-price` + 13 `offers.price` del
+  JSON-LD) y en `memoria/catalogo.json` (campo `precio` de cada beat).
+
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
    Hostinger por FTP o el Administrador de archivos.
