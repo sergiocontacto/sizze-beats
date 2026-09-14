@@ -1,7 +1,7 @@
 # Sizze Beats — Notas del proyecto
 
 ## Qué es
-Sitio de una sola página (`index.html`) para Sizze Beats, productor musical de Barcelona.
+Sitio de una sola página (`index.html`) para Sizze Beats, productor musical.
 Objetivo principal: SEO de marca (que "Sizze Beats" posicione en Google) + mostrar el
 catálogo de BeatStars con licencias, sin checkout propio (todo compra/pago va a BeatStars).
 
@@ -27,7 +27,7 @@ Licencia: BeatStars solo ofrece un tier ("Basic License", MP3) en todos los beat
 documentó tal cual, con los 6 términos exactos leídos en una página de producto.
 
 ## SEO
-- `<title>` + meta description con "Sizze Beats", "productor", "beatmaker", "Barcelona".
+- `<title>` + meta description con "Sizze Beats", "productor", "beatmaker".
 - JSON-LD: `MusicGroup` (entidad, con `sameAs` a BeatStars/Instagram/YouTube/SoundCloud
   para desambiguar frente a otros resultados de "Sizze Beats" en Google) + `ItemList`
   de `Product`/`Offer` por cada beat.
@@ -338,6 +338,26 @@ propia en Google (recuadro de conocimiento) en vez de autocorregir a "size beats
   se les puso "From $20" igual que al resto del catálogo, sin necesidad de
   tocar la sección de Licensing.
 - `sitemap.xml` `lastmod` actualizado a 2026-09-14.
+
+## Revisión 16 (2026-09-14) — Privacidad: quitar ciudad y limpiar títulos
+- El cliente pidió eliminar cualquier mención a que vive en Barcelona, y
+  revisar si había algún otro dato personal expuesto en la web.
+- Quitado "Barcelona" de: `<title>`, meta description, og:title/description,
+  twitter:title, JSON-LD (`foundingLocation` y `address` eliminados por
+  completo, `description` reescrita sin la ciudad), kicker del hero, párrafo
+  de "About", footer, `lib/manifest.js` (campo `city` eliminado), y
+  `site.webmanifest`. También en `memoria/catalogo.json` (campo `ciudad`),
+  ya que ese archivo vive en el repo público de GitHub igual que el resto.
+- Revisado el resto del sitio en busca de otros datos personales (nombre real,
+  teléfono, dirección): no se encontró nada más. El email del formulario de
+  contacto (`sizzecontact@gmail.com`) es una cuenta de marca, no personal, y
+  es necesario para que el formulario funcione — no se tocó.
+- Nota: BeatStars sigue mostrando "Barcelona, Spain" en el perfil público
+  (`beatstars.com/sizzebeatz`) — eso es un ajuste en la cuenta de BeatStars,
+  no en esta web, y requiere confirmación aparte antes de tocarlo.
+- De paso, se sustituyó la raya "—" por un guion simple "-" en los `<title>`
+  de `index.html` y `gracias.html`, tal y como pidió el cliente ("con un solo
+  guion basta").
 
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
