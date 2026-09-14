@@ -379,6 +379,13 @@ propia en Google (recuadro de conocimiento) en vez de autocorregir a "size beats
 - Resto del catálogo revisado (18 tracks en BeatStars, TELEKINESIS sigue
   excluido a propósito): sin bajas ni cambios de precio.
 
+### Revisión 19 (2026-09-15) — Renombrada la licencia Exclusive
+- El cliente renombró en BeatStars Studio el tier que antes se llamaba
+  "Exclusive License" a "Stems Wav License". Cambiado en `index.html`
+  (tarjeta de licencias y meta description) y en
+  `memoria/catalogo.json` (`licencias.tiers`). Precio, formato y
+  términos de esa tarjeta no cambiaron, solo el nombre.
+
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
    Hostinger por FTP o el Administrador de archivos.
