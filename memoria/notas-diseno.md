@@ -370,6 +370,15 @@ propia en Google (recuadro de conocimiento) en vez de autocorregir a "size beats
   beats nuevos, sin bajas, sin cambios de precio respecto a lo que ya
   había en la web.
 
+### Revisión 18 (2026-09-14) — 1 beat nuevo: HUNGRY
+- Nuevo beat en BeatStars: "HUNGRY - Trap Type Beat" (TK26238528), 142 BPM,
+  G#m, tags trap/travis scott/don toliver type beat. Añadido como #1 del
+  catálogo (portada `assets/img/18-hungry.webp`, star grunge blanco sobre
+  negro), con su `ListItem` en el JSON-LD y su entrada en
+  `memoria/catalogo.json`.
+- Resto del catálogo revisado (18 tracks en BeatStars, TELEKINESIS sigue
+  excluido a propósito): sin bajas ni cambios de precio.
+
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
    Hostinger por FTP o el Administrador de archivos.
