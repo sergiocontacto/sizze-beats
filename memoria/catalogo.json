@@ -44,6 +44,30 @@
   ],
   "beats": [
     {
+      "id": "TK26236461",
+      "titulo": "HALO - Trap Type Beat",
+      "precio": 20,
+      "precio_nota": "Desde (MP3 Lease). WAV Lease $25.95 y Premium License $49.95 también disponibles.",
+      "bpm": 161,
+      "key": "Bm",
+      "tags": ["don toliver type beat", "travis scott type beat"],
+      "beatstars_url": "https://www.beatstars.com/beat/halo-trap-type-beat-26236461",
+      "cover": "assets/img/16-halo.webp",
+      "publicado": "2026-09-14"
+    },
+    {
+      "id": "TK26233287",
+      "titulo": "HOKE TYPE BEAT - Olympic",
+      "precio": 20,
+      "precio_nota": "Desde (MP3 Lease). WAV Lease $25.95 también disponible en este beat.",
+      "bpm": 147,
+      "key": "F#m",
+      "tags": ["trap type beat", "hoke type beat"],
+      "beatstars_url": "https://www.beatstars.com/beat/hoke-type-beat-olympic-26233287",
+      "cover": "assets/img/17-hoke-olympic.webp",
+      "publicado": "2026-09-13"
+    },
+    {
       "id": "TK26232632",
       "titulo": "La Pantera x Lucho RK Type Beat",
       "precio": 20,

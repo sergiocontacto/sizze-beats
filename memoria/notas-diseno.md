@@ -325,6 +325,20 @@ propia en Google (recuadro de conocimiento) en vez de autocorregir a "size beats
   cambios de contenido, solo se mantiene coherente con este nuevo modelo.
 - `sitemap.xml` `lastmod` actualizado a 2026-09-13.
 
+## Revisión 15 (2026-09-14) — 2 beats nuevos
+- Detectados en BeatStars (17 tracks en total, antes 15): **HALO - Trap Type
+  Beat** (id TK26236461, 161 BPM, key Bm, publicado 14/09, tags Don Toliver /
+  Travis Scott type beat) y **HOKE TYPE BEAT - Olympic** (id TK26233287,
+  147 BPM, key F#m, publicado 13/09, tags trap/hoke type beat).
+- Añadidos como posiciones 1 y 2 (más recientes) en `index.html` y
+  `memoria/catalogo.json`. Portadas descargadas a 900x900 vía el truco del CDN
+  (verificadas visualmente antes de subir — ninguna era el avatar de perfil
+  por error esta vez): `assets/img/16-halo.webp`, `assets/img/17-hoke-olympic.webp`.
+- Ambos ya vienen con el modelo multi-tier (MP3 Lease $20 de entrada), así que
+  se les puso "From $20" igual que al resto del catálogo, sin necesidad de
+  tocar la sección de Licensing.
+- `sitemap.xml` `lastmod` actualizado a 2026-09-14.
+
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
    Hostinger por FTP o el Administrador de archivos.
