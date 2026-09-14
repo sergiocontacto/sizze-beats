@@ -379,12 +379,15 @@ propia en Google (recuadro de conocimiento) en vez de autocorregir a "size beats
 - Resto del catálogo revisado (18 tracks en BeatStars, TELEKINESIS sigue
   excluido a propósito): sin bajas ni cambios de precio.
 
-### Revisión 19 (2026-09-15) — Renombrada la licencia Exclusive
-- El cliente renombró en BeatStars Studio el tier que antes se llamaba
-  "Exclusive License" a "Stems Wav License". Cambiado en `index.html`
-  (tarjeta de licencias y meta description) y en
-  `memoria/catalogo.json` (`licencias.tiers`). Precio, formato y
-  términos de esa tarjeta no cambiaron, solo el nombre.
+### Revisión 19 (2026-09-15) — Renombrada la licencia Exclusive (corregido)
+- Primer intento: se cambió por error el nombre de "Exclusive License"
+  (offer-only) a "Stems Wav License".
+- Corrección del cliente: "Exclusive License" vuelve a su nombre
+  original; el que en realidad cambió es "Premium License" (MP3 + WAV +
+  Track Stems, $49.95), que ahora se llama "Stems Wav License".
+  Actualizado en `index.html` (las dos tarjetas y la meta description)
+  y en `memoria/catalogo.json` (`licencias.tiers`). Precio, formato y
+  términos de ambas tarjetas no cambiaron, solo los nombres.
 
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a

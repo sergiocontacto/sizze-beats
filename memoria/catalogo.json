@@ -21,13 +21,13 @@
         "terminos": ["2.000 copias de distribución", "500.000 streams", "1 video musical monetizado", "Descargas gratuitas ilimitadas", "Radiodifusión (2 emisoras)", "Actuaciones en directo con fines de lucro"]
       },
       {
-        "nombre": "Premium License",
+        "nombre": "Stems Wav License",
         "precio": 49.95,
         "formato": "MP3 + WAV + Track Stems",
         "terminos": ["3.000 copias de distribución", "500.000 streams", "1 video musical monetizado", "Descargas gratuitas ilimitadas", "Radiodifusión (2 emisoras)", "Actuaciones en directo con fines de lucro"]
       },
       {
-        "nombre": "Stems Wav License",
+        "nombre": "Exclusive License",
         "precio": "A convenir (offer only)",
         "formato": "MP3 + WAV + Track Stems",
         "terminos": ["Derechos exclusivos completos — el beat se retira de la tienda tras la compra", "Distribución, streams y vídeo ilimitados", "Radiodifusión y actuaciones en directo incluidas", "Precio negociado vía oferta en BeatStars"]
