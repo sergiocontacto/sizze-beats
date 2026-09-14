@@ -359,6 +359,17 @@ propia en Google (recuadro de conocimiento) en vez de autocorregir a "size beats
   de `index.html` y `gracias.html`, tal y como pidió el cliente ("con un solo
   guion basta").
 
+### Revisión 17 (2026-09-14) — Portada de HALO actualizada
+- El cliente cambió la portada del beat "HALO - Trap Type Beat" (TK26236461)
+  en BeatStars. Se descargó la nueva imagen desde el CDN de BeatStars
+  (bucket `prod-bts-track`, key `prod/track/artwork/TK26236461/artwork.jpg`)
+  a 900x900 webp, se verificó visualmente y se sustituyó
+  `assets/img/16-halo.webp` (mismo nombre de archivo, sin cambios en
+  `index.html` ni en `memoria/catalogo.json`).
+- Se revisó el resto del catálogo en BeatStars (17 tracks/productos): sin
+  beats nuevos, sin bajas, sin cambios de precio respecto a lo que ya
+  había en la web.
+
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
    Hostinger por FTP o el Administrador de archivos.
