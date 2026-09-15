@@ -389,6 +389,15 @@ propia en Google (recuadro de conocimiento) en vez de autocorregir a "size beats
   y en `memoria/catalogo.json` (`licencias.tiers`). Precio, formato y
   términos de ambas tarjetas no cambiaron, solo los nombres.
 
+### Revisión 20 (2026-09-15) — HUNGRY renombrado a DREAMS
+- El cliente renombró en BeatStars el beat "HUNGRY - Trap Type Beat"
+  (TK26238528) a "DREAMS - Trap Type Beat". La URL en BeatStars cambió
+  de slug (`.../beat/dreams-trap-type-beat-26238528`); BPM (142), key
+  (G#m), tags y portada no cambiaron. Actualizado en `index.html`
+  (tarjeta, JSON-LD) y `memoria/catalogo.json`. Se renombró también el
+  archivo de portada de `18-hungry.webp` a `18-dreams.webp` por
+  consistencia con el resto del catálogo.
+
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
    Hostinger por FTP o el Administrador de archivos.
