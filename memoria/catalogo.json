@@ -43,6 +43,30 @@
   ],
   "beats": [
     {
+      "id": "TK26252599",
+      "titulo": "STORM - Trap Type Beat",
+      "precio": 20,
+      "precio_nota": "Desde (MP3 Lease). WAV Lease $25.95 y Stems Wav License $49.95 también disponibles.",
+      "bpm": 130,
+      "key": "Dm",
+      "tags": ["trap type beat", "la pantera type beat", "don toliver type beat"],
+      "beatstars_url": "https://www.beatstars.com/beat/storm-trap-type-beat-26252599",
+      "cover": "assets/img/20-storm.webp",
+      "publicado": "2026-09-16"
+    },
+    {
+      "id": "TK26252576",
+      "titulo": "STONES - Trap Type Beat",
+      "precio": 20,
+      "precio_nota": "Desde (MP3 Lease). WAV Lease $25.95 y Stems Wav License $49.95 también disponibles.",
+      "bpm": 139,
+      "key": "Am",
+      "tags": ["trap type beat", "la pantera type beat", "don toliver type beat"],
+      "beatstars_url": "https://www.beatstars.com/beat/stones-trap-type-beat-26252576",
+      "cover": "assets/img/19-stones.webp",
+      "publicado": "2026-09-16"
+    },
+    {
       "id": "TK26238528",
       "titulo": "DREAMS - Trap Type Beat",
       "precio": 20,

@@ -398,6 +398,24 @@ propia en Google (recuadro de conocimiento) en vez de autocorregir a "size beats
   archivo de portada de `18-hungry.webp` a `18-dreams.webp` por
   consistencia con el resto del catálogo.
 
+### Revisión 21 (2026-09-16) — 2 beats nuevos: STORM y STONES
+- Revisado el perfil de BeatStars (`/sizzebeatz/tracks`): 2 beats nuevos
+  publicados hoy, ambos con el mismo par de tags "la pantera type beat" /
+  "don toliver type beat":
+  - **STORM - Trap Type Beat** (TK26252599), 130 BPM, key Dm.
+  - **STONES - Trap Type Beat** (TK26252576), 139 BPM, key Am.
+- Añadidos como posiciones 1 y 2 (más recientes, STORM antes que STONES
+  según el orden del listado de BeatStars) en `index.html` (catalog-grid +
+  JSON-LD ItemList, resto de posiciones renumeradas +2) y en
+  `memoria/catalogo.json`. Portadas descargadas a 900x900 vía el truco del
+  CDN (verificadas visualmente): `assets/img/20-storm.webp`,
+  `assets/img/19-stones.webp`.
+- Ambos con el modelo multi-tier estándar (MP3 Lease $20 de entrada), así
+  que se les puso "From $20" igual que al resto del catálogo.
+- `sitemap.xml` `lastmod` actualizado a 2026-09-16. Catálogo pasa de 18 a
+  20 instrumentales visibles en la web (más TELEKINESIS, que se mantiene
+  excluido a propósito).
+
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
    Hostinger por FTP o el Administrador de archivos.
