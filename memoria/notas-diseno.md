@@ -433,6 +433,53 @@ propia en Google (recuadro de conocimiento) en vez de autocorregir a "size beats
   portada o precio.
 - `sitemap.xml` `lastmod` actualizado a 2026-09-17.
 
+### Revisión 23 (2026-09-17) — Nuevo apartado: Mixing & Mastering
+- Nueva sección "04. Mixing & Mastering" en `index.html`, entre Licensing (03)
+  y About (ahora 05; Contact pasa a 06). Enlace "Services" añadido al nav.
+- 3 tarjetas de servicio (mismo patrón visual que `.license-card`): Mixing
+  ($50/song), Mastering ($30/song), Mixing + Mastering ($70/song, tarjeta
+  destacada en negro). Turnaround y revisiones incluidas son solo texto
+  informativo, no entran en el cálculo.
+- **Calculadora de presupuesto instantáneo** (`.quote-form`, sin backend):
+  servicio + nº de canciones + tramo de tracks/stems + entrega urgente →
+  precio estimado en vivo. Config de precios centralizada en `main.js`
+  (`QUOTE_PRICING`, `QUOTE_RUSH_FLAT`) para que sea fácil de ajustar sin
+  tocar el HTML:
+  - Tramos de stems: hasta 16 (incluido), 17–32 (+$10/canción), 33+
+    (+$20/canción).
+  - Rush delivery (menos de 3 días laborables): +$25 fijo por todo el
+    pedido (no por canción).
+  - Estos umbrales/recargos son una estimación razonable mía, no un dato
+    exacto del cliente — pendiente de que confirme si quiere afinarlos.
+- Dos CTA tras ver el precio (según lo pedido por el cliente):
+  - "Send me this quote" → autorrellena el `textarea` del formulario de
+    contacto existente (sección 06) con un resumen del presupuesto, hace
+    scroll hasta ahí y enfoca el campo "Name".
+  - "Message on Instagram" → abre el Instagram del cliente y, si el
+    navegador lo permite, copia el resumen al portapapeles con un aviso
+    ("Quote copied — paste it into your Instagram DM"). Importante:
+    `window.open` se llama de forma síncrona en el propio click, antes de
+    esperar al portapapeles — si se espera primero, algunos navegadores
+    bloquean el popup por perder el "user gesture".
+- Añadido bloque JSON-LD `Service` con `hasOfferCatalog` (Mixing/Mastering/
+  Mix+Master) para SEO, y una frase sobre el servicio en la meta
+  description.
+- Nuevas clases en `styles.css`: `.service-grid`, `.service-card`,
+  `.service-card-featured`, `.quote-panel`, `.quote-form`, `.quote-result`,
+  `.quote-checkbox`, `.quote-actions` (más estilo para `<select>`, que no
+  existía antes en el sitio). Cache-busting subido a `?v=20260917` en
+  `styles.css` y `main.js`.
+- Verificado en local: matemática de la calculadora correcta (ej. 3
+  canciones × Mix+Master con stems 17–32 + rush = (70+10)×3+25 = $265),
+  autorrelleno del formulario de contacto correcto, grid de 3 columnas en
+  escritorio confirmado por CSS computado. La apertura de Instagram no se
+  pudo verificar visualmente en el navegador de previsualización (bloquea
+  toda apertura de pestañas que no venga de un clic real del usuario), pero
+  el link/función es el mismo patrón que el botón de Instagram ya existente
+  en Contacto.
+- Pendiente: el cliente confirme si los precios base ($50/$30/$70) y los
+  recargos de stems/rush son los reales, o si prefiere ajustarlos.
+
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
    Hostinger por FTP o el Administrador de archivos.

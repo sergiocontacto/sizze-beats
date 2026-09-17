@@ -133,6 +133,98 @@
     });
   }
 
+  // ---- Mixing & Mastering instant quote calculator ----
+  var QUOTE_PRICING = {
+    mixing:    { label: "Mixing",             perSong: 50 },
+    mastering: { label: "Mastering",          perSong: 30 },
+    mixmaster: { label: "Mixing + Mastering", perSong: 70 }
+  };
+  var QUOTE_RUSH_FLAT = 25;
+
+  function initQuoteCalculator() {
+    var form = $("[data-quote-form]");
+    if (!form) return;
+    var serviceEl = $("[data-quote-service]", form);
+    var songsEl = $("[data-quote-songs]", form);
+    var stemsEl = $("[data-quote-stems]", form);
+    var rushEl = $("[data-quote-rush]", form);
+    var totalEl = $("[data-quote-total]", form);
+    var breakdownEl = $("[data-quote-breakdown]", form);
+    var sendBtn = $("[data-quote-send]", form);
+    var igBtn = $("[data-quote-instagram]", form);
+    var statusEl = $("[data-quote-status]", form);
+    if (!serviceEl || !songsEl || !stemsEl || !rushEl || !totalEl) return;
+
+    function currentQuote() {
+      var service = QUOTE_PRICING[serviceEl.value] || QUOTE_PRICING.mixmaster;
+      var songs = Math.max(1, Math.min(50, parseInt(songsEl.value, 10) || 1));
+      var stemsSurcharge = parseInt(stemsEl.value, 10) || 0;
+      var stemsLabel = stemsEl.options[stemsEl.selectedIndex] ? stemsEl.options[stemsEl.selectedIndex].text : "";
+      var rush = rushEl.checked;
+      var total = (service.perSong + stemsSurcharge) * songs + (rush ? QUOTE_RUSH_FLAT : 0);
+      return { service: service, songs: songs, stemsLabel: stemsLabel, rush: rush, total: total };
+    }
+
+    function render() {
+      var q = currentQuote();
+      totalEl.textContent = "$" + q.total;
+      var parts = [q.songs + " song" + (q.songs === 1 ? "" : "s"), q.service.label];
+      if (q.rush) parts.push("rush delivery");
+      breakdownEl.textContent = parts.join(" · ");
+    }
+
+    function summaryText() {
+      var q = currentQuote();
+      return "Mixing & Mastering quote request\n" +
+        "Service: " + q.service.label + "\n" +
+        "Songs: " + q.songs + "\n" +
+        "Tracks/stems: " + q.stemsLabel + "\n" +
+        "Rush delivery: " + (q.rush ? "Yes" : "No") + "\n" +
+        "Estimated total: $" + q.total;
+    }
+
+    [serviceEl, songsEl, stemsEl, rushEl].forEach(function (el) {
+      el.addEventListener("input", render);
+      el.addEventListener("change", render);
+    });
+    render();
+
+    if (sendBtn) {
+      sendBtn.addEventListener("click", function () {
+        var contactForm = $("[data-contact-form]");
+        var messageEl = contactForm ? $("#contact-message", contactForm) : null;
+        var nameEl = contactForm ? $("#contact-name", contactForm) : null;
+        var target = $("#contacto");
+        if (messageEl) messageEl.value = summaryText();
+        if (target) {
+          window.scrollTo({
+            top: target.getBoundingClientRect().top + scrollY - 72,
+            behavior: reduced ? "auto" : "smooth"
+          });
+        }
+        if (nameEl) setTimeout(function () { nameEl.focus(); }, reduced ? 0 : 500);
+      });
+    }
+
+    if (igBtn) {
+      igBtn.addEventListener("click", function () {
+        // Open synchronously (in direct response to the click) so popup blockers
+        // don't treat it as an unsolicited window — an async clipboard wait first
+        // breaks that "user gesture" chain in some browsers.
+        var igUrl = (window.__BRAND__ && window.__BRAND__.instagramUrl) || "https://www.instagram.com/sizze1";
+        window.open(igUrl, "_blank", "noopener");
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(summaryText()).then(function () {
+            if (!statusEl) return;
+            statusEl.textContent = "Quote copied — paste it into your Instagram DM.";
+            statusEl.hidden = false;
+          }).catch(function () {});
+        }
+      });
+    }
+  }
+
   // ---- Inline beat previews (BeatStars embed player, lazy-loaded on click) ----
   function initBeatPlayers() {
     var cards = $$("[data-beat-id]");
@@ -193,6 +285,7 @@
     safe(initMobileNav, "initMobileNav");
     safe(initAnchors, "initAnchors");
     safe(initContactForm, "initContactForm");
+    safe(initQuoteCalculator, "initQuoteCalculator");
     safe(initBeatPlayers, "initBeatPlayers");
     document.documentElement.classList.add("is-ready");
   }

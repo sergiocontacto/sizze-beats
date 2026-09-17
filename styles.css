@@ -307,6 +307,91 @@ ul { list-style: none; padding: 0; }
 .license-footnote a { color: var(--ink); }
 
 /* =============================================================
+   8b. Mixing & Mastering
+   ============================================================= */
+.section-services .grid-12 { border-bottom: 0; }
+.service-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: var(--line);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+@media (min-width: 640px) { .service-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.service-card { background: var(--bg); padding: 1.6rem 1.4rem; }
+.service-card h3 {
+  font-family: var(--sans); font-weight: 700; font-size: 1.05rem;
+  text-transform: uppercase; margin-bottom: .6rem;
+}
+.service-price { font-family: var(--mono); font-size: 1.6rem; font-weight: 700; line-height: 1; }
+.service-price span { font-size: .8rem; font-weight: 500; color: var(--mute); margin-left: .3rem; }
+.service-desc { font-size: .92rem; color: var(--mute); margin: .8rem 0 1.1rem; }
+.service-terms { border-top: 1px solid var(--line); padding-top: 1rem; }
+.service-terms li {
+  font-family: var(--mono); font-size: .78rem; line-height: 1.5; color: var(--mute);
+  padding-left: 1rem; position: relative; margin-bottom: .55rem;
+}
+.service-terms li::before { content: "—"; position: absolute; left: 0; }
+.service-terms li:last-child { margin-bottom: 0; }
+
+.service-card-featured { background: var(--ink); color: var(--bg); }
+.service-card-featured .service-desc,
+.service-card-featured .service-price span,
+.service-card-featured .service-terms li { color: #b8b8b8; }
+.service-card-featured .service-terms { border-top-color: #333; }
+
+.quote-panel { padding: 2.5rem clamp(1.25rem, 4vw, 3rem) 3rem; }
+.quote-panel h3 {
+  font-family: var(--display); font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+  text-transform: uppercase; margin-bottom: 1rem;
+}
+.quote-panel > p { max-width: 62ch; color: var(--ink); margin-bottom: 1.75rem; }
+
+.quote-form { max-width: 640px; }
+.quote-form-grid { display: grid; grid-template-columns: 1fr; gap: 0 1.25rem; }
+@media (min-width: 560px) { .quote-form-grid { grid-template-columns: 1fr 1fr; } }
+
+.form-row select {
+  width: 100%;
+  background: var(--bg); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 0;
+  padding: .85rem 1rem;
+  font-family: var(--sans); font-size: 1rem;
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--ink) 50%),
+    linear-gradient(135deg, var(--ink) 50%, transparent 50%);
+  background-position: calc(100% - 22px) center, calc(100% - 16px) center;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+.quote-checkbox {
+  display: flex; align-items: flex-start; gap: .7rem;
+  font-family: var(--mono); font-size: .85rem; color: var(--ink);
+  margin-bottom: 1.5rem; cursor: pointer;
+}
+.quote-checkbox input { width: 18px; height: 18px; margin-top: .15rem; accent-color: var(--ink); flex-shrink: 0; }
+
+.quote-result {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .4rem 1rem;
+  border: 1px solid var(--line); padding: 1.2rem 1.3rem;
+  margin-bottom: 1.1rem;
+}
+.quote-result-label {
+  font-family: var(--mono); font-size: .78rem; text-transform: uppercase;
+  letter-spacing: .04em; color: var(--mute); width: 100%;
+}
+.quote-result-value { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.4rem); }
+.quote-result-note { font-family: var(--mono); font-size: .8rem; color: var(--mute); }
+
+.quote-disclaimer { font-family: var(--mono); font-size: .78rem; color: var(--mute); margin-bottom: 1.5rem; }
+
+.quote-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; }
+
+/* =============================================================
    9. Social
    ============================================================= */
 .social-rows { border-top: 1px solid var(--line); margin-top: 1.5rem; }
