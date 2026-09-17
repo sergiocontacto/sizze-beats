@@ -416,6 +416,23 @@ propia en Google (recuadro de conocimiento) en vez de autocorregir a "size beats
   20 instrumentales visibles en la web (más TELEKINESIS, que se mantiene
   excluido a propósito).
 
+### Revisión 22 (2026-09-17) — Beat renombrado: Olympic → LONELY
+- El cliente renombró en BeatStars el beat "HOKE TYPE BEAT - Olympic"
+  (TK26233287) a "LONELY - Trap Type Beat". Cambió también la portada (de
+  una foto de concierto a una ilustración de ángel/querubín en blanco y
+  negro sobre tela) y los tags (de "trap type beat"/"hoke type beat" a
+  "trap type beat"/"la pantera"/"lucho rk"). BPM (147), key (F#m) y precio
+  ($20 de entrada) no cambiaron; la URL en BeatStars cambió de slug a
+  `.../beat/lonely-trap-type-beat-26233287`.
+- Actualizado en `index.html` (tarjeta + JSON-LD) y `memoria/catalogo.json`.
+  Portada re-descargada a 900x900 y renombrada de `17-hoke-olympic.webp` a
+  `17-lonely.webp` por consistencia con el resto del catálogo (mismo
+  criterio que la Revisión 20 con HUNGRY→DREAMS).
+- Revisado el resto del catálogo en BeatStars (20 tracks, mismos IDs que en
+  la Revisión 21): sin beats nuevos, sin bajas, sin más cambios de nombre,
+  portada o precio.
+- `sitemap.xml` `lastmod` actualizado a 2026-09-17.
+
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
    Hostinger por FTP o el Administrador de archivos.
