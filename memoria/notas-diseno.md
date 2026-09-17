@@ -508,6 +508,26 @@ cliente final no tenga que scrollear tanto.
   ($585 = (50+20)×10×0.8+25). Todos correctos. Cache-busting subido a
   `?v=20260917b`.
 
+### Revisión 25 (2026-09-17) — 1 beat nuevo + aviso pendiente
+- Nuevo beat en BeatStars: **INSIDE - Trap Type Beat** (TK26258078), 140 BPM,
+  Dm, tags trap/la pantera/eladio carrion type beat, publicado hoy. Añadido
+  como #1 (más reciente) en `index.html` (catalog-grid + JSON-LD, resto
+  renumerado +1) y `memoria/catalogo.json`. Portada descargada a 900x900 →
+  `assets/img/21-inside.webp`.
+- **Aviso sin resolver, pendiente de que el cliente confirme**: al revisar
+  el listado público de BeatStars (`/sizzebeatz/tracks`), el beat
+  "HOKE TYPE BEAT- Tres Creus Type Beat" (TK21029337) ya NO aparece —
+  antes eran 20 tracks públicos y ahora también son 20, pero cambiando
+  este por INSIDE. Su página individual sigue existiendo y sigue mostrando
+  "Buy from $20.00" (no está marcado como vendido/agotado), pero ha
+  desaparecido de la lista de tracks del perfil. No se sabe si el cliente
+  lo despublicó/pausó a propósito o es un fallo de BeatStars — a
+  diferencia de TELEKINESIS (ver `excluidos_a_proposito`), esto NO fue
+  pedido por el cliente. **No se ha tocado la web todavía**: sigue
+  publicado tal cual estaba (`assets/img/12-hoke-tres-creus-21029337.webp`,
+  su tarjeta y su entrada en `catalogo.json`) hasta que el cliente
+  confirme si hay que quitarlo o si BeatStars lo va a volver a mostrar.
+
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
    Hostinger por FTP o el Administrador de archivos.

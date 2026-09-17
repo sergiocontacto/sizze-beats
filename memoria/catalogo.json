@@ -43,6 +43,18 @@
   ],
   "beats": [
     {
+      "id": "TK26258078",
+      "titulo": "INSIDE - Trap Type Beat",
+      "precio": 20,
+      "precio_nota": "Desde (MP3 Lease). WAV Lease $25.95 y Stems Wav License $49.95 también disponibles.",
+      "bpm": 140,
+      "key": "Dm",
+      "tags": ["trap type beat", "la pantera type beat", "eladio carrion type beat"],
+      "beatstars_url": "https://www.beatstars.com/beat/inside-trap-type-beat-26258078",
+      "cover": "assets/img/21-inside.webp",
+      "publicado": "2026-09-17"
+    },
+    {
       "id": "TK26252599",
       "titulo": "STORM - Trap Type Beat",
       "precio": 20,
