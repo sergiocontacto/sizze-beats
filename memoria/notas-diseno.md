@@ -480,6 +480,34 @@ propia en Google (recuadro de conocimiento) en vez de autocorregir a "size beats
 - Pendiente: el cliente confirme si los precios base ($50/$30/$70) y los
   recargos de stems/rush son los reales, o si prefiere ajustarlos.
 
+### Revisión 24 (2026-09-17) — Ofertas por cantidad + sección más visible
+El cliente pidió dos cosas sobre Mixing & Mastering: añadir descuentos por
+cantidad de canciones, y que la sección quede más arriba para que el
+cliente final no tenga que scrollear tanto.
+- **Reordenada la sección**: "Mixing & Mastering" pasa de la posición 04 a
+  la 02 (justo después del Hero, antes del Catálogo). Catálogo pasa a 03,
+  Licensing a 04; About/Contact se quedan en 05/06. Nav reordenado igual
+  (Services ahora primero). Añadido un tercer botón "Mixing & Mastering" en
+  el Hero (junto a "View catalog" y "Listen on BeatStars") para que sea
+  visible sin hacer scroll en absoluto.
+- **Descuentos por cantidad** (`QUOTE_BULK_DISCOUNTS` en `main.js`, misma
+  filosofía que el resto de la config de precios — fácil de tocar sin
+  editar HTML): 10% desde 2 canciones, 15% desde 5, 20% desde 10. Se
+  aplican sobre el subtotal (servicio + recargo de stems) antes de sumar el
+  recargo fijo de rush (el rush no se descuenta, es un coste fijo de
+  logística). Aviso del descuento visible en el propio panel de la
+  calculadora ("Ordering multiple songs? ...") y línea "You save $X" que
+  aparece solo cuando hay descuento aplicado. También añadida una línea
+  "Bundle discounts on 2+ songs" a las 3 tarjetas de servicio y al resumen
+  que se manda al formulario de contacto / Instagram.
+- Igual que con los precios base, **estos umbrales y porcentajes (10/15/20%
+  en 2/5/10 canciones) son una propuesta razonable mía, no cifras exactas
+  del cliente** — pendiente de confirmación si quiere ajustarlos.
+- Verificado en local con varios casos: 1 canción sin descuento ($70), 2
+  canciones -10% ($126), 10 canciones Mixing + 33 stems + rush -20%
+  ($585 = (50+20)×10×0.8+25). Todos correctos. Cache-busting subido a
+  `?v=20260917b`.
+
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
    Hostinger por FTP o el Administrador de archivos.

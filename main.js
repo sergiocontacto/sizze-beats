@@ -140,6 +140,19 @@
     mixmaster: { label: "Mixing + Mastering", perSong: 70 }
   };
   var QUOTE_RUSH_FLAT = 25;
+  // Bulk (quantity) discounts, checked highest threshold first.
+  var QUOTE_BULK_DISCOUNTS = [
+    { minSongs: 10, percent: 20 },
+    { minSongs: 5,  percent: 15 },
+    { minSongs: 2,  percent: 10 }
+  ];
+
+  function quoteBulkDiscountPercent(songs) {
+    for (var i = 0; i < QUOTE_BULK_DISCOUNTS.length; i++) {
+      if (songs >= QUOTE_BULK_DISCOUNTS[i].minSongs) return QUOTE_BULK_DISCOUNTS[i].percent;
+    }
+    return 0;
+  }
 
   function initQuoteCalculator() {
     var form = $("[data-quote-form]");
@@ -150,6 +163,7 @@
     var rushEl = $("[data-quote-rush]", form);
     var totalEl = $("[data-quote-total]", form);
     var breakdownEl = $("[data-quote-breakdown]", form);
+    var savingsEl = $("[data-quote-savings]", form);
     var sendBtn = $("[data-quote-send]", form);
     var igBtn = $("[data-quote-instagram]", form);
     var statusEl = $("[data-quote-status]", form);
@@ -161,26 +175,46 @@
       var stemsSurcharge = parseInt(stemsEl.value, 10) || 0;
       var stemsLabel = stemsEl.options[stemsEl.selectedIndex] ? stemsEl.options[stemsEl.selectedIndex].text : "";
       var rush = rushEl.checked;
-      var total = (service.perSong + stemsSurcharge) * songs + (rush ? QUOTE_RUSH_FLAT : 0);
-      return { service: service, songs: songs, stemsLabel: stemsLabel, rush: rush, total: total };
+      var subtotal = (service.perSong + stemsSurcharge) * songs;
+      var discountPercent = quoteBulkDiscountPercent(songs);
+      var discountAmount = Math.round(subtotal * discountPercent / 100);
+      var total = subtotal - discountAmount + (rush ? QUOTE_RUSH_FLAT : 0);
+      return {
+        service: service, songs: songs, stemsLabel: stemsLabel, rush: rush,
+        discountPercent: discountPercent, discountAmount: discountAmount, total: total
+      };
     }
 
     function render() {
       var q = currentQuote();
       totalEl.textContent = "$" + q.total;
       var parts = [q.songs + " song" + (q.songs === 1 ? "" : "s"), q.service.label];
+      if (q.discountPercent) parts.push(q.discountPercent + "% bundle discount");
       if (q.rush) parts.push("rush delivery");
       breakdownEl.textContent = parts.join(" · ");
+      if (savingsEl) {
+        if (q.discountAmount > 0) {
+          savingsEl.textContent = "You save $" + q.discountAmount + " with the bundle discount";
+          savingsEl.hidden = false;
+        } else {
+          savingsEl.hidden = true;
+          savingsEl.textContent = "";
+        }
+      }
     }
 
     function summaryText() {
       var q = currentQuote();
-      return "Mixing & Mastering quote request\n" +
-        "Service: " + q.service.label + "\n" +
-        "Songs: " + q.songs + "\n" +
-        "Tracks/stems: " + q.stemsLabel + "\n" +
-        "Rush delivery: " + (q.rush ? "Yes" : "No") + "\n" +
-        "Estimated total: $" + q.total;
+      var lines = [
+        "Mixing & Mastering quote request",
+        "Service: " + q.service.label,
+        "Songs: " + q.songs,
+        "Tracks/stems: " + q.stemsLabel,
+        "Rush delivery: " + (q.rush ? "Yes" : "No")
+      ];
+      if (q.discountAmount > 0) lines.push("Bundle discount: " + q.discountPercent + "% (-$" + q.discountAmount + ")");
+      lines.push("Estimated total: $" + q.total);
+      return lines.join("\n");
     }
 
     [serviceEl, songsEl, stemsEl, rushEl].forEach(function (el) {
