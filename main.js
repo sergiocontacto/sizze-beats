@@ -105,7 +105,7 @@
         e.preventDefault();
         form.reset();
         form.hidden = true;
-        showStatus("Message sent! I'll get back to you as soon as possible.");
+        showStatus("¡Mensaje enviado! Te responderé lo antes posible.");
         return;
       }
 
@@ -113,7 +113,7 @@
       if (!form.reportValidity()) { e.preventDefault(); return; }
 
       e.preventDefault();
-      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Sending..."; }
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Enviando..."; }
 
       fetch(form.action, {
         method: "POST",
@@ -123,7 +123,7 @@
         if (!res.ok) throw new Error("bad status " + res.status);
         form.reset();
         form.hidden = true;
-        showStatus("Message sent! I'll get back to you as soon as possible.");
+        showStatus("¡Mensaje enviado! Te responderé lo antes posible.");
       }).catch(function () {
         // Network/CORS failure: fall back to a real native submit (leaves the page).
         form.submit();
@@ -135,9 +135,9 @@
 
   // ---- Mixing & Mastering instant quote calculator ----
   var QUOTE_PRICING = {
-    mixing:    { label: "Mixing",             perSong: 50 },
-    mastering: { label: "Mastering",          perSong: 30 },
-    mixmaster: { label: "Mixing + Mastering", perSong: 70 }
+    mixing:    { label: "Mezcla",                perSong: 50 },
+    mastering: { label: "Masterización",         perSong: 30 },
+    mixmaster: { label: "Mezcla + Masterización", perSong: 70 }
   };
   var QUOTE_RUSH_FLAT = 25;
   // Bulk (quantity) discounts, checked highest threshold first.
@@ -164,6 +164,7 @@
     var totalEl = $("[data-quote-total]", form);
     var breakdownEl = $("[data-quote-breakdown]", form);
     var savingsEl = $("[data-quote-savings]", form);
+    var phoneEl = $("[data-quote-phone]", form);
     var sendBtn = $("[data-quote-send]", form);
     var igBtn = $("[data-quote-instagram]", form);
     var statusEl = $("[data-quote-status]", form);
@@ -188,13 +189,13 @@
     function render() {
       var q = currentQuote();
       totalEl.textContent = "$" + q.total;
-      var parts = [q.songs + " song" + (q.songs === 1 ? "" : "s"), q.service.label];
-      if (q.discountPercent) parts.push(q.discountPercent + "% bundle discount");
-      if (q.rush) parts.push("rush delivery");
+      var parts = [q.songs + " " + (q.songs === 1 ? "canción" : "canciones"), q.service.label];
+      if (q.discountPercent) parts.push(q.discountPercent + "% de descuento por cantidad");
+      if (q.rush) parts.push("entrega urgente");
       breakdownEl.textContent = parts.join(" · ");
       if (savingsEl) {
         if (q.discountAmount > 0) {
-          savingsEl.textContent = "You save $" + q.discountAmount + " with the bundle discount";
+          savingsEl.textContent = "Ahorras $" + q.discountAmount + " con el descuento por cantidad";
           savingsEl.hidden = false;
         } else {
           savingsEl.hidden = true;
@@ -206,14 +207,15 @@
     function summaryText() {
       var q = currentQuote();
       var lines = [
-        "Mixing & Mastering quote request",
-        "Service: " + q.service.label,
-        "Songs: " + q.songs,
-        "Tracks/stems: " + q.stemsLabel,
-        "Rush delivery: " + (q.rush ? "Yes" : "No")
+        "Solicitud de presupuesto de Mezcla y Masterización",
+        "Servicio: " + q.service.label,
+        "Canciones: " + q.songs,
+        "Pistas/stems: " + q.stemsLabel,
+        "Entrega urgente: " + (q.rush ? "Sí" : "No")
       ];
-      if (q.discountAmount > 0) lines.push("Bundle discount: " + q.discountPercent + "% (-$" + q.discountAmount + ")");
-      lines.push("Estimated total: $" + q.total);
+      if (q.discountAmount > 0) lines.push("Descuento por cantidad: " + q.discountPercent + "% (-$" + q.discountAmount + ")");
+      lines.push("Total estimado: $" + q.total);
+      if (phoneEl) lines.splice(1, 0, "WhatsApp: " + phoneEl.value.trim());
       return lines.join("\n");
     }
 
@@ -225,6 +227,7 @@
 
     if (sendBtn) {
       sendBtn.addEventListener("click", function () {
+        if (form.reportValidity && !form.reportValidity()) return; // requires WhatsApp number
         var contactForm = $("[data-contact-form]");
         var messageEl = contactForm ? $("#contact-message", contactForm) : null;
         var nameEl = contactForm ? $("#contact-name", contactForm) : null;
@@ -242,6 +245,7 @@
 
     if (igBtn) {
       igBtn.addEventListener("click", function () {
+        if (form.reportValidity && !form.reportValidity()) return; // requires WhatsApp number
         // Open synchronously (in direct response to the click) so popup blockers
         // don't treat it as an unsolicited window — an async clipboard wait first
         // breaks that "user gesture" chain in some browsers.
@@ -251,7 +255,7 @@
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(summaryText()).then(function () {
             if (!statusEl) return;
-            statusEl.textContent = "Quote copied — paste it into your Instagram DM.";
+            statusEl.textContent = "Presupuesto copiado — pégalo en tu DM de Instagram.";
             statusEl.hidden = false;
           }).catch(function () {});
         }
@@ -269,7 +273,7 @@
       var btn = $("[data-beat-play]", card);
       var icon = btn ? $(".beat-play-icon", btn) : null;
       var mount = $("[data-beat-player]", card);
-      if (btn) { btn.classList.remove("is-playing"); btn.setAttribute("aria-pressed", "false"); btn.setAttribute("aria-label", "Play preview"); }
+      if (btn) { btn.classList.remove("is-playing"); btn.setAttribute("aria-pressed", "false"); btn.setAttribute("aria-label", "Reproducir vista previa"); }
       if (icon) icon.textContent = "▶";
       if (mount) { mount.hidden = true; mount.innerHTML = ""; }
     }
@@ -280,7 +284,7 @@
       var icon = btn ? $(".beat-play-icon", btn) : null;
       if (!btn || !mount) return;
       var id = card.getAttribute("data-beat-id");
-      var title = card.getAttribute("data-beat-title") || "beat preview";
+      var title = card.getAttribute("data-beat-title") || "vista previa del beat";
 
       btn.addEventListener("click", function () {
         var wasOpen = card === current;
@@ -298,7 +302,7 @@
         iframe.height = "140";
         iframe.style.border = "none";
         iframe.loading = "lazy";
-        iframe.title = "BeatStars player — " + title;
+        iframe.title = "Reproductor de BeatStars — " + title;
         iframe.allow = "autoplay";
         mount.innerHTML = "";
         mount.appendChild(iframe);
@@ -306,7 +310,7 @@
 
         btn.classList.add("is-playing");
         btn.setAttribute("aria-pressed", "true");
-        btn.setAttribute("aria-label", "Close preview");
+        btn.setAttribute("aria-label", "Cerrar vista previa");
         if (icon) icon.textContent = "✕";
         current = card;
       });

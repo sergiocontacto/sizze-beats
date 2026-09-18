@@ -397,9 +397,22 @@ ul { list-style: none; padding: 0; }
   width: 100%; padding-top: .3rem; border-top: 1px solid var(--line-soft);
 }
 
+.quote-phone-note { font-family: var(--mono); font-size: .78rem; color: var(--mute); margin-top: .5rem; }
+
 .quote-disclaimer { font-family: var(--mono); font-size: .78rem; color: var(--mute); margin-bottom: 1.5rem; }
 
 .quote-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; }
+
+.faq-panel { padding: 0 clamp(1.25rem, 4vw, 3rem) 3rem; border-top: 1px solid var(--line); }
+.faq-panel h3 {
+  font-family: var(--display); font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+  text-transform: uppercase; margin: 2.5rem 0 1.5rem;
+}
+.faq-list { max-width: 72ch; }
+.faq-item { padding: 1.3rem 0; border-top: 1px solid var(--line-soft); }
+.faq-item:first-child { border-top: 0; padding-top: 0; }
+.faq-item dt { font-weight: 700; margin-bottom: .5rem; }
+.faq-item dd { color: var(--mute); }
 
 /* =============================================================
    9. Social

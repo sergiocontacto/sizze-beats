@@ -528,6 +528,134 @@ cliente final no tenga que scrollear tanto.
   su tarjeta y su entrada en `catalogo.json`) hasta que el cliente
   confirme si hay que quitarlo o si BeatStars lo va a volver a mostrar.
 
+### Revisión 26 (2026-09-18) — Teléfono/WhatsApp obligatorio en la calculadora
+- El cliente pidió que quien pida presupuesto de Mixing & Mastering tenga
+  que dar obligatoriamente un número para contactarle por WhatsApp. Se
+  limitó a la calculadora de la sección 02 (no afecta al formulario de
+  contacto general de la sección 06 — ese sigue sin pedir teléfono, tal y
+  como se pidió: "la gente que pida presupuesto", no cualquiera que
+  escriba).
+- Nuevo campo "WhatsApp number" (`data-quote-phone`, `type="tel"`,
+  `required`) dentro del propio `<form data-quote-form>`, justo debajo del
+  precio estimado. Al pulsar "Send me this quote" o "Message on
+  Instagram", `main.js` llama a `form.reportValidity()` antes de hacer
+  nada — si el teléfono está vacío, el navegador muestra su aviso nativo y
+  no se prerellena el mensaje de contacto ni se abre Instagram.
+- El número introducido se añade como primera línea ("WhatsApp: ...") del
+  resumen que se manda al `textarea` del formulario de contacto y al
+  texto que se copia para Instagram — no se creó un campo nuevo en el
+  formulario de contacto en sí, para no añadir una fila "Phone" vacía en
+  los emails de mensajes normales que no vienen de la calculadora.
+- Verificado en local: con el campo vacío, ambos botones quedan bloqueados
+  (no navegan, no rellenan nada); con el campo relleno, el resumen incluye
+  la línea WhatsApp correctamente. Cache-busting subido a `?v=20260918`.
+
+### Revisión 27 (2026-09-18) — SEO para posicionar "mixing y mastering"
+El cliente quiere aparecer en Google buscando servicios de mezcla y
+masterización, no solo como productor de beats. Cambios on-page (lo único
+que se puede hacer sin salir del código):
+- **`<title>`** cambiado de "Sizze Beats - Music Producer & Beatmaker |
+  Trap & Hip Hop Instrumentals" a **"Sizze Beats - Trap Beats, Mixing &
+  Mastering Services"** — el title tag es la señal on-page más fuerte para
+  Google, y antes no mencionaba mixing/mastering en absoluto.
+- **Meta description, Open Graph y Twitter Card** reescritos para liderar
+  con "mixing and mastering services for trap, hip hop and R&B songs" en
+  vez de mencionarlo como algo secundario ("also available").
+- **JSON-LD `MusicGroup.description`** y **`Service.description`**
+  actualizados con el mismo enfoque (trap/hip hop/R&B, estimación
+  instantánea, entrega rápida).
+- **Nueva sección FAQ** ("Mixing & Mastering FAQ") al final de la sección
+  02, con 5 preguntas reales (precio, plazos, géneros, solo-mastering,
+  qué se entrega) + su **JSON-LD `FAQPage`** correspondiente — el
+  contenido FAQ es una de las formas más efectivas de aparecer en "la
+  gente también pregunta" de Google para búsquedas de servicios.
+- **Decisión de estrategia importante**: no se apuntó a "mixing and
+  mastering" a secas (término genérico dominado por estudios grandes,
+  Fiverr, LANDR, etc.) sino a la combinación con el género — "trap, hip
+  hop and R&B mixing and mastering" — mucho más ganable dado el perfil
+  real del cliente. Coherente con no volver a mencionar ciudad/ubicación
+  (ver Revisión 16, decisión de privacidad ya tomada, no se ha tocado).
+- Cache-busting subido a `?v=20260918b` (solo `styles.css`; `main.js` no
+  cambió en esta revisión).
+
+### Lo que NO se puede hacer desde el código (pendiente del cliente)
+Igual que con el SEO de marca (ver Revisión 10), lo que más mueve la
+aguja para posicionar el servicio de mixing/mastering necesita acciones
+en cuentas del cliente, no en el repositorio:
+1. **Backlinks/menciones**: añadir "mixing and mastering" a la bio de
+   Instagram, YouTube y BeatStars, con link a `sizzebeats.com/#servicios`.
+2. **Google Search Console**: pedir reindexación de la home (ya verificada
+   desde la Revisión 9) para que Google recrawlee los cambios de title/
+   description/FAQ cuanto antes.
+3. **Google Business Profile**: crear uno como "servicio a domicilio/
+   online" en la categoría de producción musical/audio — ayuda mucho a
+   aparecer en búsquedas de servicios, aunque el cliente decidió no
+   publicar su ciudad (revisar con él si quiere un perfil sin dirección
+   física, como "área de servicio" solamente).
+4. **Reseñas**: en cuanto tenga los primeros clientes de mixing/mastering,
+   pedirles reseña en Google/Instagram — las reseñas son señal fuerte para
+   búsquedas de servicio.
+Ninguno de estos se ha tocado; requieren confirmación y acceso a las
+cuentas del cliente antes de actuar, igual que en revisiones anteriores.
+
+### Revisión 28 (2026-09-18) — Web traducida de vuelta al español
+El cliente pidió que toda la web esté en español porque su público y
+mercado está aquí — **revierte la decisión de la Revisión 5** (2026-09-11,
+que tradujo todo el sitio de español a inglés). Cambios:
+- `index.html`, `gracias.html`, `404.html`: `<html lang="en">` → `lang="es"`,
+  `<title>`, meta description, Open Graph, Twitter Card, los 4 bloques
+  JSON-LD (`MusicGroup.inLanguage` a "es", descripciones, `ItemList.name`,
+  `category` de cada beat, `Service`, `FAQPage` completo) y todo el texto
+  visible: nav, hero, las 3 tarjetas de servicio + calculadora + FAQ de
+  Mixing & Mastering, catálogo (títulos de sección, "Desde $20", alt de
+  cada portada, aria-labels de los botones ▶), licencias (textos e
+  intro, términos, nota final), About, Contact (formulario completo:
+  labels, placeholders, botón, asunto del email), footer.
+- `site.webmanifest`: `description` traducida.
+- `og:locale` cambiado de `en_US` a `es_ES`.
+- **Lo que se dejó en inglés a propósito** (son nombres propios/técnicos,
+  no texto editorial):
+  - Los **títulos de los beats** (ej. "DREAMS - Trap Type Beat") — son el
+    nombre real del producto en BeatStars, traducirlos rompería la
+    coherencia con la página de compra real.
+  - Las **etiquetas de género en las tarjetas** ("Trap · 140 BPM · Dm") —
+    "Trap"/"Hip Hop"/"Boom Bap" se usan igual en español, sin traducción
+    establecida.
+  - Los **nombres de los tiers de licencia** ("MP3 Lease", "WAV Lease",
+    "Stems Wav License", "Exclusive License") y los **formatos**
+    ("MP3 + WAV + Track Stems") — son como aparecen literalmente en el
+    checkout de BeatStars; si se tradujeran, el texto de la web no
+    coincidiría con lo que el cliente ve al pagar.
+  - La marca **"SIZZE BEATS"**, nombres de redes (Instagram, YouTube,
+    BeatStars) y el usuario "@sizze1".
+- `main.js`: todos los textos dinámicos traducidos — mensajes del
+  formulario de contacto ("¡Mensaje enviado!...", "Enviando..."), los
+  labels de `QUOTE_PRICING` (Mezcla/Masterización/Mezcla + Masterización,
+  que alimentan tanto el desglose en pantalla como el resumen enviado),
+  pluralización canción/canciones, "% de descuento por cantidad",
+  "entrega urgente", el aviso de "Ahorras $X...", el resumen completo que
+  se manda al formulario de contacto y a Instagram, el aviso de
+  "Presupuesto copiado...", y los aria-label/título del reproductor de
+  beats embebido.
+- Los `name=` de los campos del formulario de contacto también se
+  tradujeron (`Name`→`Nombre`, `Email`→`Correo`, `Message`→`Mensaje`) para
+  que la tabla que llega por email a `sizzecontact@gmail.com` también esté
+  en español — no afecta a nada del JS, que referencia los campos por
+  `id`, no por `name`.
+- Cache-busting subido a `?v=20260918c` en `main.js` (`styles.css` no
+  cambió, ningún selector ni clase se tocó, solo contenido de texto).
+  `sitemap.xml` `lastmod` a 2026-09-18.
+- Verificado en local: los 4 bloques JSON-LD siguen siendo JSON válido,
+  las 20 tarjetas del catálogo muestran "Desde $20", la calculadora
+  calcula y muestra todo en español (probado con 5 canciones + urgente:
+  desglose, ahorro y resumen enviado al formulario, todos correctos),
+  formulario de contacto con labels/placeholders en español.
+- **Pendiente recomendado, no hecho**: como el `og:locale` e `inLanguage`
+  cambiaron de inglés a español, sería buena idea pedir en Google Search
+  Console que rastree de nuevo la home (mismo punto ya apuntado en la
+  Revisión 27) para que Google actualice cuanto antes el idioma detectado
+  de la página.
+
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
    Hostinger por FTP o el Administrador de archivos.
