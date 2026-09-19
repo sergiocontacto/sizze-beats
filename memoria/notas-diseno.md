@@ -656,6 +656,18 @@ que tradujo todo el sitio de español a inglés). Cambios:
   Revisión 27) para que Google actualice cuanto antes el idioma detectado
   de la página.
 
+### Revisión 29 (2026-09-20) — Cambios de mayúsculas en 2 títulos
+- Revisado BeatStars: mismos 20 tracks, sin beats nuevos ni bajas. Dos
+  títulos cambiaron solo de formato (mismas URLs/slug): "La Pantera x Lucho
+  RK Type Beat" → "LA PANTERA X LUCHO RK TYPE BEAT" y "Hoke x Cruzzi -
+  Trap Type Beat" → "HOKE x CRUZZI - Trap Type Beat". Actualizado en
+  `index.html` (h3, alt, data-beat-title, JSON-LD) y `catalogo.json`.
+- TK21029337 ("HOKE TYPE BEAT- Tres Creus Type Beat") sigue fuera del
+  listado público pero con "Buy from $20.00" activo — sigue pendiente de
+  que el cliente confirme (ver Revisión 25). No se ha tocado.
+- El cliente pidió que las futuras actualizaciones de catálogo se
+  publiquen automáticamente (commit + push) sin preguntar antes.
+
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
    Hostinger por FTP o el Administrador de archivos.
