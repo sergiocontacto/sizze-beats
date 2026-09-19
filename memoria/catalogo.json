@@ -43,6 +43,18 @@
   ],
   "beats": [
     {
+      "id": "TK26270212",
+      "titulo": "OVERBOOKING - Trap Type Beat",
+      "precio": 20,
+      "precio_nota": "Desde (MP3 Lease). WAV Lease $25.95 y Stems Wav License $49.95 también disponibles.",
+      "bpm": 150,
+      "key": "Bm",
+      "tags": ["la pantera type beat", "hoke type beat", "trap"],
+      "beatstars_url": "https://www.beatstars.com/beat/overbooking-trap-type-beat-26270212",
+      "cover": "assets/img/22-overbooking.webp",
+      "publicado": "2026-09-20"
+    },
+    {
       "id": "TK26258078",
       "titulo": "INSIDE - Trap Type Beat",
       "precio": 20,

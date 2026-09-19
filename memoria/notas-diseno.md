@@ -668,6 +668,12 @@ que tradujo todo el sitio de español a inglés). Cambios:
 - El cliente pidió que las futuras actualizaciones de catálogo se
   publiquen automáticamente (commit + push) sin preguntar antes.
 
+### Revisión 30 (2026-09-20) — Beat nuevo: OVERBOOKING
+- **OVERBOOKING - Trap Type Beat** (TK26270212), 150 BPM, Bm, tags la
+  pantera/hoke type beat/trap, publicado 20/09. Añadido como #1 en
+  `index.html` (tarjeta + JSON-LD renumerado) y `catalogo.json`; portada
+  900x900 → `assets/img/22-overbooking.webp`. Publicado automáticamente.
+
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
    Hostinger por FTP o el Administrador de archivos.
