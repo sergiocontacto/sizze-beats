@@ -674,6 +674,25 @@ que tradujo todo el sitio de español a inglés). Cambios:
   `index.html` (tarjeta + JSON-LD renumerado) y `catalogo.json`; portada
   900x900 → `assets/img/22-overbooking.webp`. Publicado automáticamente.
 
+### Revisión 31 (2026-09-22) — 2 beats nuevos: STONE BOY y DESTROY
+- **STONE BOY - Trap Type Beat** (TK26284307), 122 BPM, Em, tags eladio
+  carrion/trap/la pantera type beat, publicado 22/09.
+- **DESTROY - Boom Bap Type Beat** (TK26277238), 77 BPM, Gm, tags old
+  school type beat/boom bap, publicado 21/09 (primer beat de boom bap
+  desde hace tiempo).
+- Añadidos como #1 y #2 en `index.html` (catalog-grid + JSON-LD
+  renumerado) y `catalogo.json`. Portadas 900x900 →
+  `assets/img/23-stone-boy.webp`, `assets/img/24-destroy.webp`.
+- Nota de proceso: al revisar `/sizzebeatz/tracks` con scroll, TK21249584
+  y TK21190408 dejaron de aparecer en la ventana de 20 elementos
+  capturados — comprobado directamente que ambos siguen activos y a la
+  venta en BeatStars (mismo falso positivo que con TK21029337 en la
+  Revisión 25); no se han tocado. El catálogo del perfil ya supera los 20
+  tracks, así que a partir de ahora hay que verificar cualquier beat que
+  "desaparezca" del scroll antes de asumir que se quitó.
+- Publicado automáticamente sin pedir confirmación (instrucción del
+  cliente desde la Revisión 29).
+
 ## Cómo desplegar
 1. Sube toda la carpeta (excepto `assets/photos/source/` y `memoria/`, opcionales) a
    Hostinger por FTP o el Administrador de archivos.

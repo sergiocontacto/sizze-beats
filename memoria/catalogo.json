@@ -43,6 +43,30 @@
   ],
   "beats": [
     {
+      "id": "TK26284307",
+      "titulo": "STONE BOY - Trap Type Beat",
+      "precio": 20,
+      "precio_nota": "Desde (MP3 Lease). WAV Lease $25.95 y Stems Wav License $49.95 también disponibles.",
+      "bpm": 122,
+      "key": "Em",
+      "tags": ["eladio carrion", "trap", "la pantera type beat"],
+      "beatstars_url": "https://www.beatstars.com/beat/stone-boy-trap-type-beat-26284307",
+      "cover": "assets/img/23-stone-boy.webp",
+      "publicado": "2026-09-22"
+    },
+    {
+      "id": "TK26277238",
+      "titulo": "DESTROY - Boom Bap Type Beat",
+      "precio": 20,
+      "precio_nota": "Desde (MP3 Lease). WAV Lease $25.95 y Stems Wav License $49.95 también disponibles.",
+      "bpm": 77,
+      "key": "Gm",
+      "tags": ["old school type beat", "boom bap"],
+      "beatstars_url": "https://www.beatstars.com/beat/destroy-boom-bap-type-beat-26277238",
+      "cover": "assets/img/24-destroy.webp",
+      "publicado": "2026-09-21"
+    },
+    {
       "id": "TK26270212",
       "titulo": "OVERBOOKING - Trap Type Beat",
       "precio": 20,
